@@ -9,8 +9,8 @@ entities=codecs.open('makedonia_list.txt','w',encoding='utf-8',errors='ignore')
 
 for i in range(1696):
     print(i)
-    file_pos='../../755b062e73e111e5b5c6aa3fc8d33ad892be00b397914b38a887df7ee45fb3f9/archive/split'+str(i)+'_makedonia.txt' # dataset with part of speech tags
-    file_ner='split'+str(i)+'_makedonia.txt.tagged' # dataset with named entities
+    file_pos='./755b062e73e111e5b5c6aa3fc8d33ad892be00b397914b38a887df7ee45fb3f9/archive/split'+str(i)+'_makedonia.txt' # dataset with part of speech tags
+    file_ner='./755b062e73e111e5b5c6aa3fc8d33ad892be00b397914b38a887df7ee45fb3f9 (2)/archive/split'+str(i)+'_makedonia.txt.tagged' # dataset with named entities
     article_pos=etree.parse(file_pos)
     article_ner=etree.parse(file_ner)
     with codecs.open(file_pos,'r',encoding='utf-8',errors='ignore') as file_pos:
