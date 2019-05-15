@@ -1,4 +1,5 @@
 The following repository provides all needed information for the support of a Greek model in spaCy that uses as Part of Speech tags classes with morphological features. The tag map can be found in [this](https://github.com/explosion/spaCy/blob/master/spacy/lang/el/tag_map.py) page. The dataset that was used is a source of news from a newspaper called “Makedonia” and is a part of the [clarin](https://www.clarin.gr/) project. The dataset in under the CC – BY – NC – SA licence.
+
 Additional work has been done for the support of Named Entity Recognition in the Greek model. The same annotated source was used for the support of 4 types of named entities (person, organization, location, facility). The annotated dataset with named entities is licenced under the CC – BY – NC – SA licence.
 For the creation of the model the train and dev data is provided in proper json format. However, to recreate the dataset from source for use, a number of steps has to be followed.
 
