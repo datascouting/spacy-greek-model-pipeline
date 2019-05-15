@@ -11,5 +11,6 @@ For the creation of the model the train and dev data is provided in proper json 
 * Step 7: `python parsing_entitites.py`: Extracts the annotated entities from the sentences.
 * Step 8: `python convert_to_biluo.py`: Converts the entities to biluo format.
 * Step 9: `python convert_to_json_format_and_split_to_train_dev.py`: Uses only the records with proper tokenization and the existence of entities in the sentences, for the creation of train and dev data.
+
 It must be noted that configuration has to be done in the init file of lang/el, so the proper tag_map is used.
 The model has been trained using as pretrained vectors the Greek, FastText, Common Crawl vectors from [this](https://fasttext.cc/docs/en/crawl-vectors.html) link. The POS Tagger and the Entity Recognizer are provided from the model.
