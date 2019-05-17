@@ -9,7 +9,7 @@ For the creation of the model the train and dev data is provided in proper json 
 * Step 3: `python parsing_tags.py`: Extracts their pos tags. The __tags.json__ will contain the part of speech tag for all tokens matching the index of the record from __sentences.json__.
 * Step 4: Download and unzip the dataset with the named entities from [this](https://keg.clarin.gr/resources/browse/modern-greek-texts-corpus-makedonia-newspaper-annotated-by-the-grne-tagger/76777cae4c8811e89c6caa3fc6ebde2ce44e9fd17cce43d8ab298aae0c7058fe/) link and move the unzipped folder in the same path with the scripts.
 * Step 5: `python making_entity_list.py`: Creates the entity list from the dataset.
-* Step 6: `python edit_entity_list.py`: Removes insufficient records from the list, entities with less than 4 characters and sort the list by the length of the named entity.
+* Step 6: `python edit_entity_list.py`: Removes insufficient records from the list, entities with less than 4 characters and sorts the list by the length of the named entity.
 * Step 7: `python parsing_entitites.py`: Extracts the annotated entities from the sentences.
 * Step 8: `python convert_to_biluo.py`: Converts the entities to biluo format.
 * Step 9: `python convert_to_json_format_and_split_to_train_dev.py`: Uses only the records with proper tokenization and the existence of entities in the sentences, for the creation of train and dev data.
