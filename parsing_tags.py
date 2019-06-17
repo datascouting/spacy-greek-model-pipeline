@@ -12,59 +12,61 @@ n = {
     'xmi': "http://www.omg.org/XMI"
 }
 
-for i in range(1696):
-    file = './755b062e73e111e5b5c6aa3fc8d33ad892be00b397914b38a887df7ee45fb3f9/archive/split' + \
-        str(i)+'_makedonia.txt'
+with codecs.open('tags.json', 'w', encoding='utf-8', errors='ignore') as tags:
 
-    print(file)
+    for i in range(1696):
+        file = './755b062e73e111e5b5c6aa3fc8d33ad892be00b397914b38a887df7ee45fb3f9/archive/split' + \
+            str(i)+'_makedonia.txt'
 
-    article = etree.parse(file)
+        print(file)
 
-    with codecs.open('tags.json', 'w', encoding='utf-8', errors='ignore') as tags, \
-            codecs.open(file, 'r', encoding='utf-8', errors='ignore') as file:
-        sofas = article.xpath(
-            "cas:Sofa/@sofaString",
-            namespaces=n
-        )[0]  # news text
+        with codecs.open(file, 'r', encoding='utf-8', errors='ignore') as file:
 
-        begin_tokens = article.xpath("//types:Token/@begin", namespaces=names)
-        end_tokens = article.xpath("//types:Token/@end", namespaces=names)
+            article = etree.parse(file)        
+                
+            sofas = article.xpath(
+                "cas:Sofa/@sofaString",
+                namespaces=n
+            )[0]  # news text
 
-        # index of token in sentence
-        sent_ord = article.xpath("//types:Token/@sentOrd", namespaces=names)
-        num_sentences = len(article.xpath(
-            "//types:Sentence/@end",
-            namespaces=names
-        ))
+            begin_tokens = article.xpath("//types:Token/@begin", namespaces=names)
+            end_tokens = article.xpath("//types:Token/@end", namespaces=names)
 
-        # pos id to locate the class
-        pos_tokens_id = article.xpath(
-            "//types:Token/@posTag",
-            namespaces=names
-        )
+            # index of token in sentence
+            sent_ord = article.xpath("//types:Token/@sentOrd", namespaces=names)
+            num_sentences = len(article.xpath(
+                "//types:Sentence/@end",
+                namespaces=names
+            ))
 
-        index = 0
+            # pos id to locate the class
+            pos_tokens_id = article.xpath(
+                "//types:Token/@posTag",
+                namespaces=names
+            )
 
-        for num in range(num_sentences):
-            sentence = ''
+            index = 0
 
-            while 1:
-                tag_value = article.xpath(
-                    "//types:POSTag[@xmi:id=" +
-                    pos_tokens_id[index] + "]/@value",
-                    namespaces=names
-                )[0]
+            for num in range(num_sentences):
+                sentence = ''
 
-                sentence = sentence + tag_value + ' '
-                index = index + 1
+                while 1:
+                    tag_value = article.xpath(
+                        "//types:POSTag[@xmi:id=" +
+                        pos_tokens_id[index] + "]/@value",
+                        namespaces=names
+                    )[0]
 
-                if len(sent_ord) == index or sent_ord[index] == '1':
-                    if(sentence[:-1] != 'ENUM PUNCT PUNCT PUNCT PUNCT PUNCT PUNCT PUNCT PUNCT PUNCT PUNCT PUNCT PUNCT PUNCT'):  # ignore noise
-                        my_dict = {
-                            "tags": u''.join(sentence[:-1])
-                        }
+                    sentence = sentence + tag_value + ' '
+                    index = index + 1
 
-                        json.dump(my_dict, tags, ensure_ascii=False)
-                        tags.write('\n')
+                    if len(sent_ord) == index or sent_ord[index] == '1':
+                        if(sentence[:-1] != 'ENUM PUNCT PUNCT PUNCT PUNCT PUNCT PUNCT PUNCT PUNCT PUNCT PUNCT PUNCT PUNCT PUNCT'):  # ignore noise
+                            my_dict = {
+                                "tags": u''.join(sentence[:-1])
+                            }
 
-                    break
+                            json.dump(my_dict, tags, ensure_ascii=False)
+                            tags.write('\n')
+
+                        break
