@@ -3,7 +3,7 @@ The following repository provides all needed information for the support of a Gr
 Additional work has been done for the support of Named Entity Recognition in the Greek model. The same annotated source was used for the support of 4 types of named entities (person, organization, location, facility). The annotated dataset with named entities is licenced under the CC – BY – NC – SA licence.
 
 For the creation of the model the train and dev data is provided in proper json format. However, to recreate the dataset from source for use, a number of steps has to be followed.
-###Steps
+
 * Step 1: Download and unzip the dataset with the pos tags from [this](https://keg.clarin.gr/resources/browse/modern-greek-texts-corpus-makedonia-newspaper-annotated-by-the-ilsp-lemmatizer/02a9ea6227fc11e6a7b7aa3fc0687644d756918b84cd4f6a88cf2b2f8c0cf3c9/) link.
 * Step 2: `python parsing_sentences.py path_of_extracted_folder_1`: Extracts the sentences from the dataset. The path of the extracted folder must be passed as an argument. The sentences will be saved in json objects in __sentences.json__.
 * Step 3: `python parsing_tags.py path_of_extracted_folder_2`: Extracts their pos tags. The path of the extracted folder must be passed as an argument. The __tags.json__ will contain the part of speech tag for all tokens matching the index of the record from __sentences.json__.
