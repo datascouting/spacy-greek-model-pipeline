@@ -2,6 +2,7 @@
 import codecs
 from lxml import etree
 import json
+import sys
 
 names = {
     'types': "http:///gr/ilsp/types.ecore",
@@ -15,13 +16,13 @@ n = {
 
 with codecs.open('sentences.json', 'w', encoding='utf-8', errors='ignore') as sentences:
     for i in range(1696):
-        file = './755b062e73e111e5b5c6aa3fc8d33ad892be00b397914b38a887df7ee45fb3f9/archive/split' + \
-            str(i)+'_makedonia.txt'
+        
+        file = sys.argv[1]+'/archive/split' + str(i)+'_makedonia.txt'
         print(file)
+        
         with codecs.open(file, 'r', encoding='utf-8', errors='ignore') as file:
 
             article = etree.parse(file)
-
             
             sofas = article.xpath(
                 "cas:Sofa/@sofaString",
