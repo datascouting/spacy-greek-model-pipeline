@@ -7,7 +7,7 @@ entity_class = []
 
 with codecs.open('makedonia_list.txt', 'r', encoding='utf-8', errors='ignore') as file:
     for line in file:
-        pair = line.split('\t')
+        pair = line.split('    ')
         entity_value.append(pair[0])
         entity_class.append(pair[1].split('\n')[0])
 
