@@ -35,7 +35,7 @@ with codecs.open('sentences.json', 'r', encoding='utf-8', errors='ignore') as se
                     "tag": tags_list[index],
                     "ner": entities[index],
                     "id": index,
-                    "orth": str(doc[index])
+                    "orth": doc[index].text
                 })
 
             my_list = [{
