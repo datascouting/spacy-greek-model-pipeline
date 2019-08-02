@@ -51,11 +51,11 @@ with codecs.open('entities.json', 'w', encoding='utf-8', errors='ignore') as ent
 
                 if not entity_conflict:  # correct named entity
                     entity_lists.append(range(begin_entity, end_entity))
-                    final_record.append(
+                    final_record.append((
                         begin_entity,
                         end_entity,
                         entity_class[index]
-                    )
+                    ))
 
         if entity_lists == []:
             my_dict = {"entities": ""}
