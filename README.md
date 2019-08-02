@@ -10,7 +10,7 @@ For the creation of the model the train and dev data is provided in proper json 
 * Step 4: Download and unzip the dataset with the named entities from [this](https://keg.clarin.gr/resources/browse/modern-greek-texts-corpus-makedonia-newspaper-annotated-by-the-grne-tagger/76777cae4c8811e89c6caa3fc6ebde2ce44e9fd17cce43d8ab298aae0c7058fe/) link.
 * Step 5: `python making_entity_list.py path_of_extracted_folder_1 path_of_extracted_folder_2`: Creates the entity list from the dataset. The paths of the previous extracted folder must be passed as arguments.
 * Step 6: `python edit_entity_list.py`: Removes insufficient records from the list, entities with less than 4 characters and sort the list by the length of the named entity.
-* Step 7: `python parsing_entitites.py`: Extracts the annotated entities from the sentences.
+* Step 7: `python parsing_entities.py`: Extracts the annotated entities from the sentences. The __entities.json__ will contain the position and the class of the named entities matching the index of the record from __sentences.json__ .
 * Step 8: `python convert_to_biluo.py`: Converts the entities to biluo format.
 * Step 9: `python convert_to_json_format_and_split_to_train_dev.py`: Uses only the records with proper tokenization and the existence of entities in the sentences, for the creation of train and dev data.
 
